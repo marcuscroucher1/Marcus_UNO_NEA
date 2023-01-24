@@ -53,8 +53,8 @@ class Deck:
 
         for possible_colour in filename_colours:
             for possible_symbol in possible_symbols:
-                card_obj = Card(colour=possible_colour, symbol=possible_symbol)
-                list_of_cards.append(card_obj)
+                card_obj = Card(colour=possible_colour, symbol=possible_symbol) #temporary object which will collect together the colour and symbol of the card, and assign it to the card object
+                list_of_cards.append(card_obj) # this appends the just summoned info from the card_obj, and then appens the card_obj to the array which is list_of_cards, which is in fact a list of card_objs.
         for card in list_of_cards: # picks the card that matches the one according to the line underneath this
             if card.get_symbol() == '5' and card.get_colour() == 'Yellow': # will find a card that is of number 5 and
                 # colour yellow, and if exists, prints its matching image using the print function.
