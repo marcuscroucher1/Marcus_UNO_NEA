@@ -1,3 +1,5 @@
+import time
+
 import pygame
 import random
 
@@ -25,8 +27,6 @@ class Card:
     def __str__(self):
         return self.__colour + str(self.__symbol) + str(self.__image)
 
-
-
     def print_card_image(self): # this print card function exists to display the image of the card which is
         pygame.init()
         X = 388
@@ -36,6 +36,7 @@ class Card:
         image = self.__image
         screen.blit(image, (0, 0))
         pygame.display.flip()
+        time.sleep(0.05)
         # status = True
         # while (status):
         #     for i in pygame.event.get():
@@ -55,24 +56,20 @@ class Deck:
 
         for possible_colour in colours:
             for possible_symbol in symbols:
-                card_obj = Card(colour=possible_colour, symbol=possible_symbol) #temporary object
+                card_obj = Card(colour=possible_colour, symbol=possible_symbol) #temporary object used for adding card data to list_of_cards array
                 self.list_of_cards.append(card_obj)
                 # card_obj.print_card_image()
+
+        # for eachcard in self.list_of_cards: # this is useful for showing that the object does in fact contain all the data - this loops through the object and prints all of the data.
+        #     eachcard.print_card_image()
+        #     print(eachcard.get_colour())
+        #     print(eachcard.get_symbol())
+
 
 
     def shuffle(self):
         random.shuffle(self.list_of_cards)
 
-        for eachcard in self.list_of_cards: # this is useful for showing that the object does in fact contain all the data - this loops through the object and prints all of the data.
-            eachcard.print_card_image()
-            print(eachcard.get_colour())
-            print(eachcard.get_symbol())
 
-
-
-
-obj = Deck()    # creates an object(think like a table) called obj, and creates it using the 'instructions' set out by the Deck Class.
-
-
-
-
+card_deck = Deck()    # creates an object(think like a table) called card_deck, and creates it using the 'instructions' set out by the Deck Class.
+card_deck.shuffle()
