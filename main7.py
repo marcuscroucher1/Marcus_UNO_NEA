@@ -3,11 +3,11 @@ import random
 
 class Card:
 
-    def __init__(self):
-        self.__colour = None
-        self.__symbol = None
-        self.__image = None
-        self.__owner = None
+    def __init__(self, colour, symbol, owner):
+        self.__colour = colour
+        self.__symbol = symbol
+        self.__image = pygame.image.load("assets/" + self.__colour + "_" + self.__symbol + ".png")
+        self.__owner = owner
 
     def get_colour(self):
         return self.__colour
@@ -24,22 +24,21 @@ class Card:
     def __str__(self):
         return self.__colour + str(self.__number) + str(self.__owner)
 
+class Deck:
 
-        # will generate the uno deck and assign the card assets to each card
-        filename_colours = ["Blue", "Green", "Red", "Yellow"]
-        data_colours = ["b", "g", "r", "y"]
-        symbols = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "Draw", "Reverse", "Skip"]
+    list_of_cards = []
 
-        for colour in filename_colours:
-            for symbol in symbols:
-                self.__image = "assets/" + colour + "_" + symbol + ".png"
-                self.__colour = colour
-                self.__symbol = symbol
-                print("")
-                print(self.__image)
-                print(self.__colour)
-                print(self.__symbol)
+    filename_colours = ["Blue", "Green", "Red", "Yellow"]
+    possible_symbols = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "Draw", "Reverse", "Skip"]
+
+    for possible_colour in filename_colours:
+        for possible_symbol in possible_symbols:
+            image = "assets/" + possible_colour + "_" + possible_symbol + ".png"
+            colour = possible_colour
+            symbol = possible_symbol
+            print("")
+            print(image)
+            print(colour)
+            print(symbol)
 
 
-
-Card()
