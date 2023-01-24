@@ -50,3 +50,24 @@ class Deck:
 
     def shuffle(self):
         random.shuffle(self.list_of_cards)
+
+    def deal_7(self):
+
+        for i in range(7):
+            self.list_of_cards[i].assign_owner(Player)
+
+class Player:
+
+    def __init__(self):
+        self.__name = name
+        self.__currentCards = currentCards
+        self.__score = score
+
+    def get_name(self):
+        return self.__name
+
+    def get_currentCards
+        return self.__currentCards
+
+    def get_score
+        return self.__score
