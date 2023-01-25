@@ -52,13 +52,12 @@ class Deck:
         random.shuffle(self.list_of_cards)
 
     def deal_7(self):
-
         for i in range(7):
             self.list_of_cards[i].assign_owner(Player)
 
 class Player:
 
-    def __init__(self):
+    def __init__(self, name, currentCards, score):
         self.__name = name
         self.__currentCards = currentCards
         self.__score = score
@@ -66,8 +65,12 @@ class Player:
     def get_name(self):
         return self.__name
 
-    def get_currentCards
+    def get_currentCards(self):
         return self.__currentCards
 
-    def get_score
+    def get_score(self):
         return self.__score
+
+    def save_score(self):
+        # create a file called scores if not already present, and save player scores based on playerid
+        pass
