@@ -78,6 +78,15 @@ class Player:
     def save_score(self):
         # create a file called scores if not already present, and save player scores based on playerid
         pass
+    def place_card(self):
+        pass
+
+
+
+
+
+
+
 
 # deck = Deck() # example of shuffling cards and giving them to player named "Player" (hardcoded)
 # deck.display_details_deck()
