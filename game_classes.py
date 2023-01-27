@@ -19,7 +19,7 @@ class Card:
     def assign_owner(self, owner):
         self.__owner = owner
 
-    def display_details(self):
+    def display_details_card(self):
         print(self.__colour, self.__symbol, self.__owner)
 
     def __str__(self):
@@ -48,12 +48,16 @@ class Deck:
                 card_obj = Card(colour=possible_colour, symbol=possible_symbol)
                 self.list_of_cards.append(card_obj)
 
+    def display_details_deck(self):
+        for card in self.list_of_cards:
+            Card.display_details_card(card)
+
     def shuffle(self):
         random.shuffle(self.list_of_cards)
 
     def deal_7(self):
         for i in range(7):
-            self.list_of_cards[i].assign_owner(Player)
+            self.list_of_cards[i].assign_owner("Player")
 
 class Player:
 
@@ -74,3 +78,10 @@ class Player:
     def save_score(self):
         # create a file called scores if not already present, and save player scores based on playerid
         pass
+
+# deck = Deck() # example of shuffling cards and giving them to player named "Player" (hardcoded)
+# deck.display_details_deck()
+# deck.shuffle()
+# deck.deal_7()
+# print("uierhgiuofehg")
+# deck.display_details_deck()
