@@ -81,6 +81,7 @@ class Player:
     def place_card(self):
         pass
 
+# TODO create pile class
 
 
 
