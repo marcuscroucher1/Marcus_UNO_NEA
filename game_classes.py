@@ -23,6 +23,9 @@ class Card:
     def set_owner(self, owner):
         self.__owner = owner
 
+    def get_image(self):
+        return self.__image
+
     def display_details_card(self):
         print(self.__colour, self.__symbol, self.__owner)
 
@@ -46,6 +49,7 @@ class Deck:
     def __init__(self):
         self.__list_of_cards = []
         self.__list_of_player_cards = []
+        self.current_card = None
 
         colours = ["Blue", "Green", "Red", "Yellow"]
         symbols = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "Draw", "Reverse", "Skip"]
@@ -58,10 +62,12 @@ class Deck:
         for card in self.__list_of_cards:
             card.display_details_card()
             card.print_card_image()
+        for card in self.__list_of_player_cards:
+            card.display_details_card()
+            card.print_card_image()
 
     def shuffle(self):
         random.shuffle(self.__list_of_cards)
-
 
     # def assign_owner(self, ):
     #     owner = Card.get_owner()
@@ -70,32 +76,31 @@ class Deck:
         for i in range(7):
             self.obtain_card(player)
 
-
     def obtain_card(self, owner):
         card = self.__list_of_cards[0]
-        card.set_owner(owner)
+        card.set_owner(owner.get_name())
         self.__list_of_cards = self.__list_of_cards[1:]
         self.__list_of_player_cards.append(card)
-
 
     def get_player_cards(self):
         return self.__list_of_player_cards
 
-
-   # # def add
-   #  def __init__(self, currentCards):
-   #      self.__currentCards = currentCards
-   #      for card in self.__currentCards:
-   #          card.set_owner('Pile')
+    def get_deck(self):
+        return self.__list_of_cards
 
 
+# # def add
+#  def __init__(self, currentCards):
+#      self.__currentCards = currentCards
+#      for card in self.__currentCards:
+#          card.set_owner('Pile')
 
 
 class Player:
 
-    def __init__(self, name, score):
+    def __init__(self, name):
         self.__name = name
-        self.__score = score
+        self.__score = 0
 
     def get_name(self):
         return self.__name
@@ -106,20 +111,21 @@ class Player:
             if card.get_owner() == self.__name:
                 player_cards.append(card)
 
+    def new_score(self, new_score):
+        self.__score = new_score
+
     def get_score(self):
         return self.__score
 
     def save_score(self):
         # create a file called scores if not already present, and save player scores based on playerid
         pass
+
     def place_card(self):
         pass
 
 
 # class Pile:
-
-
-
 
 
 # class Pickup_Pile:
@@ -137,15 +143,23 @@ class Player:
 #     def __init__(self, currentCards):
 #         self.__cards = []
 
-  #  def add
+#  def add
 
-deck = Deck() # example of shuffling cards and giving them to player named "Player" (hardcoded)
-player = Player()
-#  deck.create_pile()
-deck.display_details_deck()
-deck.shuffle()
-deck.obtain_card("Player")
-# deck.deal_7("Player")
-print("uierhgiuofehg")
-deck.display_details_deck()
-player.get_currentCards()
+# deck = Deck() # example of shuffling cards and giving them to player named "Player" (hardcoded)
+# player = Player()
+# #  deck.create_pile()
+# deck.display_details_deck()
+# deck.shuffle()
+# deck.obtain_card("Player")
+# # deck.deal_7("Player")
+# print("uierhgiuofehg")
+# deck.display_details_deck()
+# player.get_currentCards()
+
+# deck = Deck()
+# deck.shuffle()
+# player1 = Player('Grace')
+# player2 = Player('Marcus')
+# deck.deal_7(player1)
+# deck.deal_7(player2)
+# deck.display_details_deck()
