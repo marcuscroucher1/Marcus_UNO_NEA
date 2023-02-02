@@ -15,6 +15,15 @@ def main():
     background = background.convert()
     background.fill((250, 250, 250))
 
+    # # Display some text
+    # font = pygame.font.Font(None, 36)
+    # text = font.render("UNO TEST", 1, (10, 10, 10))
+    # textpos = text.get_rect()
+    # textpos.centerx = background.get_rect().centerx
+    # textpos.centery = background.get_rect().centery
+    # background.blit(text, textpos)
+
+
     # Blit everything to the screen
     screen.blit(background, (0, 0))
     screen.blit(card.get_image(), (100, 100))

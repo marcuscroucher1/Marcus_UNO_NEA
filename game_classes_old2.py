@@ -43,6 +43,7 @@ class Card:
         pygame.display.flip()
         time.sleep(0.1)
 
+
 class Deck:
 
     def __init__(self):
@@ -68,6 +69,9 @@ class Deck:
     def shuffle(self):
         random.shuffle(self.__list_of_cards)
 
+    # def assign_owner(self, ):
+    #     owner = Card.get_owner()
+
     def deal_7(self, player):
         for i in range(7):
             self.obtain_card(player)
@@ -85,6 +89,13 @@ class Deck:
         return self.__list_of_cards
 
 
+# # def add
+#  def __init__(self, currentCards):
+#      self.__currentCards = currentCards
+#      for card in self.__currentCards:
+#          card.set_owner('Pile')
+
+
 class Player:
 
     def __init__(self, name):
@@ -94,7 +105,7 @@ class Player:
     def get_name(self):
         return self.__name
 
-    def get_current_cards(self, cards):
+    def get_currentCards(self, cards):
         player_cards = []
         for card in cards:
             if card.get_owner() == self.__name:
@@ -107,8 +118,48 @@ class Player:
         return self.__score
 
     def save_score(self):
-        # create a file called scores if not already present, and save player scores based on player id
+        # create a file called scores if not already present, and save player scores based on playerid
         pass
 
     def place_card(self):
         pass
+
+
+# class Pile:
+
+
+# class Pickup_Pile:
+#     def __init__(self, currentCards):
+#         self.__currentCards = currentCards
+#
+#         for card in deck.list_of_cards:
+#             card.assign_owner("Pickup_Pile")
+#
+#     def remove_card(self):
+#         pass
+
+# class Pile:
+#     cards = None
+#     def __init__(self, currentCards):
+#         self.__cards = []
+
+#  def add
+
+# deck = Deck() # example of shuffling cards and giving them to player named "Player" (hardcoded)
+# player = Player()
+# #  deck.create_pile()
+# deck.display_details_deck()
+# deck.shuffle()
+# deck.obtain_card("Player")
+# # deck.deal_7("Player")
+# print("uierhgiuofehg")
+# deck.display_details_deck()
+# player.get_currentCards()
+
+# deck = Deck()
+# deck.shuffle()
+# player1 = Player('Grace')
+# player2 = Player('Marcus')
+# deck.deal_7(player1)
+# deck.deal_7(player2)
+# deck.display_details_deck()
