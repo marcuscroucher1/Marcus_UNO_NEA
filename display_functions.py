@@ -3,18 +3,17 @@ import game_classes
 
 class Display:
     def __init__(self):
-        pass
-
-    def display_card(self):
         pygame.init()
         screen = pygame.display.set_mode((1280, 720))
-        image = pygame.image.load("assets/Blue_0.png")
-        width = image.get_rect().width
-        height = image.get_rect().height
+        bg_image = pygame.image.load("assets/Table_3.png")
+        pygame.display.set_caption('UNO!')
+
         background = pygame.Surface(screen.get_size())
         background = background.convert()
-        background.fill((0, 0, 0))
+        background.fill((250, 250, 250))
 
+        screen.blit(background, (0, 0))
+        screen.blit(bg_image, (0, 0))
 
         while True:
             for event in pygame.event.get():
@@ -22,23 +21,19 @@ class Display:
                     pygame.quit()
                     sys.exit()
 
-            iterate = 1
-            iterate2 = 1
-            for i in range(200):
+            screen.blit(background, (0, 0))
+            screen.blit(bg_image, (0, 0))
+            pygame.display.flip()
 
-                image = pygame.transform.scale(image, (width * iterate2, height * iterate2))
+    def display_card(self, xCoordinate, yCoordinate, cardId):
+        self.__xCoordinate = xCoordinate
+        self.__yCoordinate = yCoordinate
+        self.__cardId = cardId + 1
 
-                iterate2 += 0.01
+        screen.blit(cardId)
 
-                screen.blit(background, (0, 0))
-                screen.blit(image, (iterate, 100))
-                iterate += 1
-                pygame.display.update()
+    def display_player_cards(self, player):
+        self.__player = player
+        for each card in game_classes.Deck.get_player_cards()
 
-                print(iterate)
-
-display = Display()
-display.display_card()
-
-
-#, xCoordinate, yCoordinate, card
+Display()

@@ -30,7 +30,7 @@ class Display:
 
                 iterate2 += 0.01
 
-                screen.blit(background, (0, 0))
+                # screen.blit(background, (0, 0))
                 screen.blit(image, (iterate, 100))
                 iterate += 1
                 pygame.display.update()
