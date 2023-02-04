@@ -5,4 +5,3 @@ import display_functions
 class RunGame:
     def __init__(self):
         pass
-

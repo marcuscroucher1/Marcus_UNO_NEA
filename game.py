@@ -1,35 +1,31 @@
 import pygame
-from pygame.locals import *
+import time
 
 import game_classes
+import display_functions
 
-def main():
-    deck = game_classes.Deck()
-    card = deck.get_deck()[0]
-    pygame.init()
-    screen = pygame.display.set_mode((1280, 720))
-    pygame.display.set_caption('UNO!')
+# display = display_functions.Display()
+# display.display_background()
 
-  # Fill background
-    background = pygame.Surface(screen.get_size())
-    background = background.convert()
-    background.fill((250, 250, 250))
+deck = game_classes.Deck()
+player1 = game_classes.Player(name="player1")
 
-    # Blit everything to the screen
-    screen.blit(background, (0, 0))
-    screen.blit(card.get_image(), (100, 100))
-
-
-    # Event loop
-    while True:
-        for event in pygame.event.get():
-            if event.type == QUIT:
-                return
-
-        screen.blit(background, (0, 0))
-        screen.blit(card.get_image(), (0, 0))
-        pygame.display.flip()
+deck.deal_7(player1)
+player1.get_current_cards()
 
 
 
-if __name__ == '__main__': main()
+
+
+
+
+
+
+
+# image = pygame.image.load("assets/Blue_3.png")
+# display.display_card(100, 100, image)
+
+
+
+
+# display.dont_quit_pygame() # run this at the very end
