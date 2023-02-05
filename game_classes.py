@@ -100,9 +100,12 @@ class Player:
             if card.get_owner() == self.__name:
                 player_cards.append(card)
 
-
         for x in player_cards: # for debugging
             Card.display_details_card(x) # for debugging
+        return player_cards
+
+
+
 
     def new_score(self, new_score):
         self.__score = new_score
