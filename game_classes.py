@@ -104,8 +104,6 @@ class Player:
         return player_cards
 
 
-
-
     def new_score(self, new_score):
         self.__score = new_score
 

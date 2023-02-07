@@ -24,8 +24,6 @@ class CreateDisplay:
 class CreateDeck:
     deck = game_classes.Deck()
 
-
-
 class CreatePlayer:
     def __init__(self, player_name,):
         player_name = game_classes.Player(name=str(player_name))
