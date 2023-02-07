@@ -4,7 +4,6 @@ import time
 
 
 class Card:
-
     def __init__(self, colour, symbol, owner):
         self.__colour = colour
         self.__symbol = symbol
@@ -119,4 +118,3 @@ class Player:
 
     def place_card(self):
         pass
-
