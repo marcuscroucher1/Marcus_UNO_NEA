@@ -8,7 +8,7 @@ class Display:
     def display_card(self):
         pygame.init()
         screen = pygame.display.set_mode((1280, 720))
-        image = pygame.image.load("assets/Blue_0.png")
+        image = pygame.image.load("../assets/Blue_0.png")
         width = image.get_rect().width
         height = image.get_rect().height
         background = pygame.Surface(screen.get_size())

@@ -8,7 +8,7 @@ class Display:
         self.screen = pygame.display.set_mode((1280, 720))
         pygame.display.set_caption('UNO!')
     def display_background(self):
-        bg_image = pygame.image.load("assets/Table_3.png")
+        bg_image = pygame.image.load("../assets/Table_3.png")
         self.screen.blit(bg_image, (0, 0))
         pygame.display.flip()
 

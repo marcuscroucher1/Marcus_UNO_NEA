@@ -6,7 +6,7 @@ class Display:
     def __init__(self):
         pygame.init()
         self.screen = pygame.display.set_mode((1280, 720))
-        bg_image = pygame.image.load("assets/Table_3.png")
+        bg_image = pygame.image.load("../assets/Table_3.png")
         pygame.display.set_caption('UNO!')
 
         background = pygame.Surface(self.screen.get_size())
@@ -33,7 +33,7 @@ class Display:
     #         pass
 
     def test(self):
-        testimage = pygame.image.load("assets/Blue_7.png")
+        testimage = pygame.image.load("../assets/Blue_7.png")
         self.screen.blit(testimage, (100, 100))
         time.sleep(1)
         pygame.display.flip()
