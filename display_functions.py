@@ -4,13 +4,24 @@ import time
 
 class Display:
     def __init__(self):
+
+        self.__screenHeight = 720
+        self.__screenWidth = 1280
+
+        self.__CardsHeight = self.__screenHeight # only to get screen height initially
+
         pygame.init()
-        self.screen = pygame.display.set_mode((1280, 720))
+        self.screen = pygame.display.set_mode((self.__screenWidth, self.__screenHeight))
         pygame.display.set_caption('UNO!')
+
     def display_background(self):
         bg_image = pygame.image.load("assets/Table_3.png")
         self.screen.blit(bg_image, (0, 0))
         pygame.display.flip()
+
+    def card_row_height(self):
+        # fill this out later for making a ui that can adjust itself for more players
+        pass
 
     def display_card(self, xCoordinate, yCoordinate, cardImage, scale):
         self.__xCoordinate = xCoordinate
@@ -37,6 +48,11 @@ class Display:
     #     time.sleep(1)
     #     pygame.display.flip()
 
+    def display_face_up_deck(self, currentCard):
+        self.screen.blit(currentCard, (500, 100))
+        pygame.display.flip()
+
+
 
     def dont_quit_pygame(self):
         while True:
@@ -49,9 +65,10 @@ class Display:
 
 #marcus = game_classes.Player(name="marcus")
 
-#display = Display()
-
-#display.display_background()
+# display = Display()
+#
+# display.display_background()
+# display.display_face_up_deck()
 
 #cardtodisplay = marcus.get_current_cards()
 #print(cardtodisplay)

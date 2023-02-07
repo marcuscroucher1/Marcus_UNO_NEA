@@ -83,6 +83,9 @@ class Deck:
     def get_deck(self):
         return self.__list_of_cards
 
+    def get_current_deck_top_card(self):
+        return self.__list_of_cards[0]
+
 
 class Player:
 
