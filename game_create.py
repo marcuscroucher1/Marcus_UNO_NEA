@@ -7,13 +7,21 @@ import display_functions
 
 
 display = display_functions.Display()
+
+
+
+# display.display_text(500, 500, "hello")
+
+
 display.display_background()
+
 
 deck = game_classes.Deck()
 deck.shuffle()
 
-currentCard = deck.get_current_deck_top_card().get_image()
-display.display_face_up_deck(currentCard)
+
+currentTopCard = deck.get_current_deck_top_card().get_image()
+display.display_current_deck_top_card(currentTopCard)
 
 time.sleep(1)
 
@@ -37,12 +45,15 @@ create_player("Rachel", 100)
 
 
 
-currentCard = deck.get_current_deck_top_card().get_image()
-display.display_face_up_deck(currentCard)
+currentTopCard = deck.get_current_deck_top_card().get_image()
+display.display_current_deck_top_card(currentTopCard)
+
+currentBottomCard = deck.get_current_deck_bottom_card().get_image()
+display.display_current_deck_bottom_card(currentBottomCard)
 
 
-
-
+display.display_text(575, 650, "Face up deck")
+display.display_text(860, 650, "Face down deck (normally cant see)")
 
 
 
