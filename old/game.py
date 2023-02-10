@@ -1,6 +1,3 @@
-import pygame
-import time
-
 import game_classes
 import display_functions
 
@@ -56,10 +53,6 @@ player1 = game_classes.Player(name="Marcus")
 
 display.dont_quit_pygame() # run this at the very end
 
-
-
-import pygame
-import time
 import game_classes
 import display_functions
 

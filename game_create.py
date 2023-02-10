@@ -9,7 +9,6 @@ import display_functions
 display = display_functions.Display()
 
 
-
 # display.display_text(500, 500, "hello")
 
 
@@ -52,8 +51,8 @@ currentBottomCard = deck.get_current_deck_bottom_card().get_image()
 display.display_current_deck_bottom_card(currentBottomCard)
 
 
-display.display_text(575, 650, "Face up deck")
-display.display_text(860, 650, "Face down deck (normally cant see)")
+display.display_text(400, 650, "deck to pick up from (normally cant see)")
+display.display_text(950, 650, "Placed down cards")
 
 
 

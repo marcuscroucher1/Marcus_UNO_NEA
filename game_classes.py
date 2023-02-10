@@ -47,6 +47,7 @@ class Deck:
     def __init__(self):
         self.__list_of_cards = []
         self.__list_of_player_cards = []
+        self.__list_of_placed_cards = []
         self.current_card = None
 
         colours = ["Blue", "Green", "Red", "Yellow"]
@@ -88,7 +89,6 @@ class Deck:
 
     def get_current_deck_bottom_card(self):
         return self.__list_of_cards[-1]
-
 
 class Player:
 

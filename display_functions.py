@@ -29,7 +29,7 @@ class Display:
         # # if you want to use this module.
 
     def display_background(self):
-        bg_image = pygame.image.load("assets/Table_3.png")
+        bg_image = pygame.image.load("assets/Table_1.png")
         self.screen.blit(bg_image, (0, 0))
         pygame.display.flip()
 
