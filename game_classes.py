@@ -45,7 +45,7 @@ class Card:
 class Deck:
 
     def __init__(self):
-        self.__list_of_cards = []
+        self.__list_of_face_up_deck = []
         self.__list_of_player_cards = []
         self.__list_of_placed_cards = []
         self.current_card = None
@@ -55,40 +55,46 @@ class Deck:
         for possible_colour in colours:
             for possible_symbol in symbols:
                 card_obj = Card(colour=possible_colour, symbol=possible_symbol, owner="Pile")
-                self.__list_of_cards.append(card_obj)
+                self.__list_of_face_up_deck.append(card_obj)
 
     def display_details_deck(self):
-        for card in self.__list_of_cards:
+        for card in self.__list_of_face_up_deck:
             card.display_details_card()
             card.print_card_image()
         for card in self.__list_of_player_cards:
             card.display_details_card()
             card.print_card_image()
+        for card in self.__list_of_placed_cards:
+            card.display_details_card()
 
     def shuffle(self):
-        random.shuffle(self.__list_of_cards)
+        random.shuffle(self.__list_of_face_up_deck)
 
     def deal_7(self, player):
         for i in range(7):
             self.obtain_card(player)
 
     def obtain_card(self, owner):
-        card = self.__list_of_cards[0]
+        card = self.__list_of_face_up_deck[0]
         card.set_owner(owner.get_name())
-        self.__list_of_cards = self.__list_of_cards[1:]
+        self.__list_of_face_up_deck = self.__list_of_face_up_deck[1:]
         self.__list_of_player_cards.append(card)
 
     def get_player_cards(self):
         return self.__list_of_player_cards
 
     def get_deck(self):
-        return self.__list_of_cards
+        return self.__list_of_face_up_deck
 
     def get_current_deck_top_card(self):
-        return self.__list_of_cards[0]
+        return self.__list_of_face_up_deck[0]
 
     def get_current_deck_bottom_card(self):
-        return self.__list_of_cards[-1]
+        return self.__list_of_face_up_deck[-1]
+
+    def place_card(self, card): # pass in card as no. in array of current cards
+        self.__list_of_placed_cards.append(card)
+
 
 class Player:
 
@@ -118,7 +124,4 @@ class Player:
 
     def save_score(self):
         # create a file called scores if not already present, and save player scores based on player id
-        pass
-
-    def place_card(self):
         pass

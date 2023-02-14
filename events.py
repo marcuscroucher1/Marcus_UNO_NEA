@@ -4,7 +4,5 @@ import game_create
 import display_functions
 
 class GameTurn:
-    def __init__(self, player):
-
-
-
+    def __init__(self, player, card):
+        game_classes.Deck.place_card(card)

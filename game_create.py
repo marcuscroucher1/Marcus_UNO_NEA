@@ -2,6 +2,7 @@ import pygame
 import time
 import game_classes
 import display_functions
+import events
 
 
 
@@ -54,7 +55,12 @@ display.display_current_deck_bottom_card(currentBottomCard)
 display.display_text(400, 650, "deck to pick up from (normally cant see)")
 display.display_text(950, 650, "Placed down cards")
 
+time.sleep(1)
 
+
+
+
+events.GameTurn(player="Marcus", card=)
 
 
 
