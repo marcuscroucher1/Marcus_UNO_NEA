@@ -60,7 +60,7 @@ time.sleep(1)
 
 
 
-events.GameTurn(player="Marcus", card=)
+#events.GameTurn(player="Marcus", card=)
 
 
 
