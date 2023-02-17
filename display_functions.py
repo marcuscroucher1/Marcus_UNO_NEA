@@ -76,6 +76,21 @@ class Display:
         self.screen.blit(currentBottomCard, (850, 75))
         pygame.display.flip()
 
+    def display_currently_placed_cards(self, currentPlacedCard):
+        self.screen.blit(currentPlacedCard, (850, 75))
+        pygame.display.flip()
+
+
+    # def display_current_player_cards(self, player_name, yposition, deck, display):
+    #     currentcards = player_name.get_current_cards(deck.get_player_cards())
+    #     x = 4
+    #     for card in currentcards:
+    #         time.sleep(0.05)
+    #         card_image = card.get_image()
+    #         scale = 0.25
+    #
+    #         display.display_card(x, yposition, card_image, scale)
+    #         x += 35
 
 
     def dont_quit_pygame(self):

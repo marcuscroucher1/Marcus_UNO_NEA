@@ -95,6 +95,12 @@ class Deck:
     def place_card(self, card): # pass in card as no. in array of current cards
         self.__list_of_placed_cards.append(card)
 
+    def get_current_placed_card(self):
+        return self.__list_of_placed_cards[-1]
+
+    def first_card(self):
+        self.__list_of_placed_cards.append(self.__list_of_face_up_deck[0])
+        self.__list_of_face_up_deck = self.__list_of_face_up_deck[1:]
 
 class Player:
 
@@ -114,6 +120,21 @@ class Player:
         for x in player_cards: # for debugging
             Card.display_details_card(x) # for debugging
         return player_cards
+
+    def place_selected_card(self, card, deckName):
+        deckName.place_card(card)
+
+    def display_current_cards(self, deckName, displayName, yposition):
+        currentcards = self.get_current_cards(deckName.get_player_cards())
+        x = 4
+        for card in currentcards:
+            time.sleep(0.05)
+            card_image = card.get_image()
+            scale = 0.25
+
+            displayName.display_card(x, yposition, card_image, scale)
+            x += 35
+
 
 
     def new_score(self, new_score):

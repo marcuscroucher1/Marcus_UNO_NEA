@@ -1,66 +1,63 @@
 import pygame
-import time
 import game_classes
 import display_functions
-import events
-
-
+import time
 
 
 display = display_functions.Display()
-
-
-# display.display_text(500, 500, "hello")
-
-
-display.display_background()
-
-
 deck = game_classes.Deck()
+
+# setting up game
+display.display_background()
 deck.shuffle()
 
+# currentTopCard = deck.get_current_deck_top_card().get_image()
+# display.display_current_deck_top_card(currentTopCard)
+# time.sleep(0.5)
+
+# creating two players
+Marcus = game_classes.Player("Marcus")
+Rachel = game_classes.Player("Rachel")
+
+deck.deal_7(Marcus)
+deck.deal_7(Rachel)
+
+Marcus.display_current_cards(deck, display, 575)
+Rachel.display_current_cards(deck, display, 100)
 
 currentTopCard = deck.get_current_deck_top_card().get_image()
 display.display_current_deck_top_card(currentTopCard)
 
-time.sleep(1)
+deck.first_card()
 
-
-
-def create_player(player_name, yposition):
-    player_name = game_classes.Player(name=str(player_name))
-    deck.deal_7(player_name)
-    currentcards = player_name.get_current_cards(deck.get_player_cards())
-    x = 4
-    for card in currentcards:
-        time.sleep(0.05)
-        card_image = card.get_image()
-        scale = 0.25
-
-        display.display_card(x,yposition,card_image, scale)
-        x += 35
-
-create_player("Marcus", 575)
-create_player("Rachel", 100)
-
-
+time.sleep(0.5)
 
 currentTopCard = deck.get_current_deck_top_card().get_image()
 display.display_current_deck_top_card(currentTopCard)
 
-currentBottomCard = deck.get_current_deck_bottom_card().get_image()
-display.display_current_deck_bottom_card(currentBottomCard)
+
+currentPlacedCard = deck.get_current_placed_card().get_image()
+display.display_currently_placed_cards(currentPlacedCard)
+
+time.sleep(0.5)
+
+######
+
+marcuscard = Marcus.get_current_cards(deck.get_player_cards())
+marcuscard = marcuscard[0]
+
+Marcus.place_selected_card(marcuscard, deck)
+
+currentTopCard = deck.get_current_deck_top_card().get_image()
+display.display_current_deck_top_card(currentTopCard)
 
 
-display.display_text(400, 650, "deck to pick up from (normally cant see)")
-display.display_text(950, 650, "Placed down cards")
+Marcus.display_current_cards(deck, display, 575)
+Rachel.display_current_cards(deck, display, 100)
 
-time.sleep(1)
+currentPlacedCard = deck.get_current_placed_card().get_image()
+display.display_currently_placed_cards(currentPlacedCard)
 
-
-
-
-#events.GameTurn(player="Marcus", card=)
 
 
 
