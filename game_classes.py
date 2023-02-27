@@ -2,6 +2,8 @@ import pygame
 import random
 import time
 
+import display_functions
+
 
 class Card:
     def __init__(self, colour, symbol, owner):
@@ -54,7 +56,7 @@ class Deck:
         symbols = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "Draw", "Reverse", "Skip"]
         for possible_colour in colours:
             for possible_symbol in symbols:
-                card_obj = Card(colour=possible_colour, symbol=possible_symbol, owner="Pile")
+                card_obj = Card(colour=possible_colour, symbol=possible_symbol, owner="pickupPile")
                 self.__list_of_face_up_deck.append(card_obj)
 
     def display_details_deck(self):
@@ -94,11 +96,15 @@ class Deck:
 
     def place_card(self, card): # pass in card as no. in array of current cards
         self.__list_of_placed_cards.append(card)
+        # for card in self.__list_of_player_cards:
+        #     if card.get_owner = player
+        #         self.__list_of_player_cards
+
 
     def get_current_placed_card(self):
         return self.__list_of_placed_cards[-1]
 
-    def first_card(self):
+    def place_first_card(self):
         self.__list_of_placed_cards.append(self.__list_of_face_up_deck[0])
         self.__list_of_face_up_deck = self.__list_of_face_up_deck[1:]
 
@@ -122,19 +128,28 @@ class Player:
         return player_cards
 
     def place_selected_card(self, card, deckName):
+        card.set_owner(owner="placedCardsPile")
         deckName.place_card(card)
 
-    def display_current_cards(self, deckName, displayName, yposition):
+
+    def display_current_cards(self, deckName, displayName, yposition, timeSleep):
         currentcards = self.get_current_cards(deckName.get_player_cards())
-        x = 4
+        x = 67
         for card in currentcards:
-            time.sleep(0.05)
+            time.sleep(timeSleep)
             card_image = card.get_image()
-            scale = 0.25
+            scale = 0.1
 
             displayName.display_card(x, yposition, card_image, scale)
-            x += 35
+            x += 16
 
+    def redraw_player_deck(self, deckName, displayName):
+        yposition = 115
+        timeSleep = 0.05
+
+        displayName.display_text(67, 75, self.__name, 1)
+
+        self.display_current_cards(deckName, displayName, yposition, timeSleep)
 
 
     def new_score(self, new_score):

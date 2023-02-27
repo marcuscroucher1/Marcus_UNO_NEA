@@ -2,6 +2,7 @@ import pygame
 import pygame.freetype
 import game_classes
 import time
+import sys
 
 class Display:
     def __init__(self):
@@ -15,7 +16,9 @@ class Display:
         self.screen = pygame.display.set_mode((self.__screenWidth, self.__screenHeight))
         pygame.display.set_caption('UNO!')
 
-        self.__gameFont = pygame.freetype.Font("assets/Ubuntu/Ubuntu-Regular.ttf", 24)
+        self.__gameFontSmall = pygame.freetype.Font("assets/Ubuntu/Ubuntu-Regular.ttf", 24)
+        self.__gameFontMedium = pygame.freetype.Font("assets/Ubuntu/Ubuntu-Regular.ttf", 40)
+        self.__gameFontLarge = pygame.freetype.Font("assets/Ubuntu/Ubuntu-Regular.ttf", 56)
 
         # keepAlive = True
         #
@@ -33,6 +36,58 @@ class Display:
         self.screen.blit(bg_image, (0, 0))
         pygame.display.flip()
 
+
+    def draw_oppnents_grid_bg(self):
+        oval_1 = pygame.image.load("assets/Oval_1.png")
+        self.screen.blit(oval_1, (14, 21))
+        pygame.display.flip()
+
+    def draw_client_player_cards_bg(self):
+        oval_1 = pygame.image.load("assets/Oval_2.png")
+        self.screen.blit(oval_1, (273, 466))
+        pygame.display.flip()
+
+    def draw_pickup_cards_pile_bg(self):
+        oval_1 = pygame.image.load("assets/Oval_3.png")
+        self.screen.blit(oval_1, (717, 20))
+        pygame.display.flip()
+
+    def draw_placed_cards_pile_bg(self):
+        oval_1 = pygame.image.load("assets/Oval_3.png")
+        self.screen.blit(oval_1, (998, 20))
+        pygame.display.flip()
+
+    ##
+
+    def draw_bg_opponent(self, opponentNumber):
+        if opponentNumber == 1:
+            x = 41
+            y = 46
+        elif opponentNumber == 2:
+            x = 260
+            y = 46
+        elif opponentNumber == 3:
+            x = 478
+            y = 46
+        elif opponentNumber == 4:
+            x = 41
+            y = 247
+        elif opponentNumber == 5:
+            x = 260
+            y = 247
+        elif opponentNumber == 6:
+            x = 478
+            y = 247
+        else:
+            x = 0
+            y = 0
+        oval_4 = pygame.image.load("assets/Oval_4.png")
+        self.screen.blit(oval_4, (x, y))
+        pygame.display.flip()
+
+
+    ###
+
     def card_row_height(self):
         # fill this out later for making a ui that can adjust itself for more players
         pass
@@ -46,9 +101,22 @@ class Display:
         self.screen.blit(cardImage, (xCoordinate, yCoordinate))
         pygame.display.flip()
 
-    def display_text(self, xCoordinate, yCoordinate, text):
-        textToDisplay, rect = self.__gameFont.render(text, (255, 255, 255))
-        self.screen.blit(textToDisplay, (xCoordinate, yCoordinate))
+
+    ###
+
+
+    ###
+
+    def display_text(self, xCoordinate, yCoordinate, text, size):
+        if size == 0:
+            textToDisplay, rect = self.__gameFontSmall.render(text, (0, 0, 0))
+            self.screen.blit(textToDisplay, (xCoordinate, yCoordinate))
+        elif size == 1:
+            textToDisplay, rect = self.__gameFontMedium.render(text, (0, 0, 0))
+            self.screen.blit(textToDisplay, (xCoordinate, yCoordinate))
+        elif size == 2:
+            textToDisplay, rect = self.__gameFontLarge.render(text, (0, 0, 0))
+            self.screen.blit(textToDisplay, (xCoordinate, yCoordinate))
         # my_font = pygame.font.SysFont('Comic Sans MS', int(size))
         # textToDisplay = my_font.render("Hello World", False, (0, 0, 0))
         # self.screen.blit(textToDisplay, (xCoordinate, yCoordinate))
