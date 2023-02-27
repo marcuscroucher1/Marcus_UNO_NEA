@@ -110,9 +110,10 @@ class Deck:
 
 class Player:
 
-    def __init__(self, name):
+    def __init__(self, name, opponentNumber):
         self.__name = name
         self.__score = 0
+        self.__opponentNumber = opponentNumber
 
     def get_name(self):
         return self.__name
@@ -132,24 +133,49 @@ class Player:
         deckName.place_card(card)
 
 
-    def display_current_cards(self, deckName, displayName, yposition, timeSleep):
+    def display_current_cards(self, deckName, displayName, xposition, yposition, timeSleep, scale, xpositiontoadvance): # use
+        # with
+        # redraw_player_deck
         currentcards = self.get_current_cards(deckName.get_player_cards())
-        x = 67
         for card in currentcards:
             time.sleep(timeSleep)
             card_image = card.get_image()
-            scale = 0.1
 
-            displayName.display_card(x, yposition, card_image, scale)
-            x += 16
+            displayName.display_card(xposition, yposition, card_image, scale)
+            xposition += xpositiontoadvance
 
     def redraw_player_deck(self, deckName, displayName):
-        yposition = 115
-        timeSleep = 0.05
 
-        displayName.display_text(67, 75, self.__name, 1)
+        # yposition = 115
+        # timeSleep = 0.05
 
-        self.display_current_cards(deckName, displayName, yposition, timeSleep)
+        coordinates = displayName.get_coordinate_set(self.__opponentNumber)
+
+        PlayerSquare_x = coordinates[0]
+        PlayerSquare_y = coordinates[1]
+        card_x = coordinates[2]
+        card_y = coordinates[3]
+
+        displayName.draw_bg_opponent(PlayerSquare_x, PlayerSquare_y)
+
+        displayName.display_text((card_x + 6), (card_y - 45), self.__name, 1) # 1 means medium size
+
+        self.display_current_cards(deckName, displayName, card_x, card_y, 0.05, 0.1, 16)
+
+        #self.display_current_cards(deckName, displayName, yposition, timeSleep)
+
+    def redraw_client_cards(self, deckName, displayName):
+        self.display_current_cards(deckName, displayName, 284, 492, 0.05, 0.32, 140)
+
+    def redraw_client_name(self, display):
+        display.display_text(44, 609, self.__name, 2)
+
+
+
+
+
+
+
 
 
     def new_score(self, new_score):

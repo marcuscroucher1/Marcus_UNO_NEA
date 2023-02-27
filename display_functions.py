@@ -38,59 +38,98 @@ class Display:
 
 
     def draw_oppnents_grid_bg(self):
-        oval_1 = pygame.image.load("assets/Oval_1.png")
-        self.screen.blit(oval_1, (14, 21))
+        oval = pygame.image.load("assets/Oval_1.png")
+        self.screen.blit(oval, (14, 21))
         pygame.display.flip()
 
     def draw_client_player_cards_bg(self):
-        oval_1 = pygame.image.load("assets/Oval_2.png")
-        self.screen.blit(oval_1, (273, 466))
+        oval = pygame.image.load("assets/Oval_2.png")
+        self.screen.blit(oval, (273, 466))
         pygame.display.flip()
 
     def draw_pickup_cards_pile_bg(self):
-        oval_1 = pygame.image.load("assets/Oval_3.png")
-        self.screen.blit(oval_1, (717, 20))
+        oval = pygame.image.load("assets/Oval_3.png")
+        self.screen.blit(oval, (717, 20))
         pygame.display.flip()
 
     def draw_placed_cards_pile_bg(self):
-        oval_1 = pygame.image.load("assets/Oval_3.png")
-        self.screen.blit(oval_1, (998, 20))
+        oval = pygame.image.load("assets/Oval_3.png")
+        self.screen.blit(oval, (998, 20))
         pygame.display.flip()
 
-    ##
+    def draw_client_name_bg(self):
+        oval = pygame.image.load("assets/Oval_6.png")
+        self.screen.blit(oval, (19, 588))
+        pygame.display.flip()
 
-    def draw_bg_opponent(self, opponentNumber):
+    def draw_UNO_Button(self):
+        oval = pygame.image.load("assets/Oval_7.png")
+        self.screen.blit(oval, (96, 484))
+
+        self.display_text(120, 508, "UNO!", 2)
+
+        pygame.display.flip()
+
+
+    ##
+    def get_coordinate_set(self, opponentNumber):
         if opponentNumber == 1:
-            x = 41
-            y = 46
+            PlayerSquare_x = 41
+            PlayerSquare_y = 46
+
+            card_x = 67
+            card_y = 115
         elif opponentNumber == 2:
-            x = 260
-            y = 46
+            PlayerSquare_x = 260
+            PlayerSquare_y = 46
+
+            card_x = 285
+            card_y = 115
         elif opponentNumber == 3:
-            x = 478
-            y = 46
+            PlayerSquare_x = 478
+            PlayerSquare_y = 46
+
+            card_x = 503
+            card_y = 115
         elif opponentNumber == 4:
-            x = 41
-            y = 247
+            PlayerSquare_x = 41
+            PlayerSquare_y = 247
+
+            card_x = 67
+            card_y = 316
         elif opponentNumber == 5:
-            x = 260
-            y = 247
+            PlayerSquare_x = 260
+            PlayerSquare_y = 247
+
+            card_x = 285
+            card_y = 316
         elif opponentNumber == 6:
-            x = 478
-            y = 247
+            PlayerSquare_x = 478
+            PlayerSquare_y = 247
+
+            card_x = 503
+            card_y = 316
         else:
-            x = 0
-            y = 0
+            PlayerSquare_x = 0
+            PlayerSquare_y = 0
+
+            card_x = 0
+            card_y = 0
+
+        return PlayerSquare_x, PlayerSquare_y, card_x, card_y
+
+    def draw_bg_opponent(self, PlayerSquare_x, PlayerSquare_y):
+
         oval_4 = pygame.image.load("assets/Oval_4.png")
-        self.screen.blit(oval_4, (x, y))
+        self.screen.blit(oval_4, (PlayerSquare_x, PlayerSquare_y))
         pygame.display.flip()
 
 
     ###
 
-    def card_row_height(self):
-        # fill this out later for making a ui that can adjust itself for more players
-        pass
+    # def card_row_height(self):
+    #     # fill this out later for making a ui that can adjust itself for more players
+    #     pass
 
     def display_card(self, xCoordinate, yCoordinate, cardImage, scale):
 
@@ -122,8 +161,6 @@ class Display:
         # self.screen.blit(textToDisplay, (xCoordinate, yCoordinate))
         pygame.display.flip()
 
-
-
     # def display_player_cards(self, player):
     #     self.__player = player
     #     for card in game_classes.Deck.get_player_cards():
@@ -137,16 +174,16 @@ class Display:
     #     pygame.display.flip()
 
     def display_current_deck_top_card(self, currentTopCard):
-        self.screen.blit(currentTopCard, (450, 75))
-        pygame.display.flip()
+        self.display_card(755, 129, currentTopCard, 0.55)
 
     def display_current_deck_bottom_card(self, currentBottomCard):
-        self.screen.blit(currentBottomCard, (850, 75))
-        pygame.display.flip()
+        self.display_card(850, 75, currentBottomCard, 0.55)
 
     def display_currently_placed_cards(self, currentPlacedCard):
-        self.screen.blit(currentPlacedCard, (850, 75))
-        pygame.display.flip()
+        self.display_card(1024, 111, currentPlacedCard, 0.55)
+
+        # self.screen.blit(currentPlacedCard, (1024, 111))
+        # pygame.display.flip()
 
 
     # def display_current_player_cards(self, player_name, yposition, deck, display):

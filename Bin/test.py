@@ -2,7 +2,7 @@ import pygame
 from pygame.locals import *
 pygame.init()
 screen = pygame.display.set_mode((500, 500), RESIZABLE)
-pic = pygame.image.load("assets/Blue_7.png")  # You need an example picture in the same folder as this file!
+pic = pygame.image.load("../assets/Blue_7.png")  # You need an example picture in the same folder as this file!
 running = True
 while running:
     pygame.event.pump()
