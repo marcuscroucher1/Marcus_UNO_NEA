@@ -6,6 +6,24 @@ import time
 display = display_functions.Display()
 deck = game_classes.Deck()
 
+
+
+while True:
+
+    # taken from https://www.geeksforgeeks.org/how-to-create-buttons-in-a-game-using-pygame/
+
+    for event in pygame.event.get(): # event is user defined remember!
+
+        if event.type == pygame.QUIT:
+            pygame.quit()
+
+        if event.type == pygame.MOUSEBUTTONDOWN:
+            if 590 <= mouse[0] <= 670 and 315 <= mouse[1] <= 345:
+                print("the button works!")
+
+
+
+
 # setting up game
 display.display_background()
 
@@ -62,13 +80,14 @@ Dylan.redraw_client_name(display)
 Dylan.redraw_client_cards(deck, display)
 
 
-
+display.create_button()
 
 
 deck.place_first_card()
 
 
 # YOU ARE IN THE PROCESS OF MAKING THE BOTTOM CARDS WORK, THEN CREATING CLIENTS THAT CAN MOVE THE CARDS AROUND USING
+# BUTTONS - CHECK THE WEBSITE ON PYGAME BUTTONS
 # SOCKETS - ASK JOE?
 
 
@@ -79,6 +98,6 @@ currentTopCard = deck.get_current_deck_top_card().get_image()
 display.display_current_deck_top_card(currentTopCard)
 
 
-
-display.dont_quit_pygame() # place at end of file, for now
+display.input_checks()
+#display.dont_quit_pygame() # place at end of file, for now
 

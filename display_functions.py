@@ -16,6 +16,9 @@ class Display:
         self.screen = pygame.display.set_mode((self.__screenWidth, self.__screenHeight))
         pygame.display.set_caption('UNO!')
 
+        # FPS_CLOCK = pygame.time.Clock()
+
+
         self.__gameFontSmall = pygame.freetype.Font("assets/Ubuntu/Ubuntu-Regular.ttf", 24)
         self.__gameFontMedium = pygame.freetype.Font("assets/Ubuntu/Ubuntu-Regular.ttf", 40)
         self.__gameFontLarge = pygame.freetype.Font("assets/Ubuntu/Ubuntu-Regular.ttf", 56)
@@ -36,6 +39,18 @@ class Display:
         self.screen.blit(bg_image, (0, 0))
         pygame.display.flip()
 
+    ####
+
+    def create_button(self):
+        color_dark = (100, 100, 100, 100)
+        ...
+        ...
+        pygame.draw.rect(self.screen, color_dark, [284, 492, 131, 190])
+        # x-coordinate, y-coordinate, width and height
+        # https://coderslegacy.com/python/creating-buttons-in-pygame/
+
+
+    ####
 
     def draw_oppnents_grid_bg(self):
         oval = pygame.image.load("assets/Oval_1.png")
@@ -136,7 +151,7 @@ class Display:
         width = cardImage.get_rect().width
         height = cardImage.get_rect().height
 
-        cardImage = pygame.transform.scale(cardImage, (width * scale, height * scale))
+        cardImage = pygame.transform.smoothscale(cardImage, (width * scale, height * scale))
         self.screen.blit(cardImage, (xCoordinate, yCoordinate))
         pygame.display.flip()
 
@@ -196,6 +211,18 @@ class Display:
     #
     #         display.display_card(x, yposition, card_image, scale)
     #         x += 35
+
+    def input_checks(self):
+
+        mouse = pygame.mouse.get_pos()
+
+        while True:
+            for event in pygame.event.get():
+                # For events that occur upon clicking the mouse (left click)
+                if event.type == pygame.MOUSEBUTTONDOWN:
+                    if 590 <= mouse[0] <= 670 and 315 <= mouse[1] <= 345:
+                        print("the button works!")
+
 
 
     def dont_quit_pygame(self):
