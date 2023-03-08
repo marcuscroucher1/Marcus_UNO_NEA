@@ -80,7 +80,7 @@ Dylan.redraw_client_name(display)
 Dylan.redraw_client_cards(deck, display)
 
 
-# display.create_button()
+display.create_button_zone()
 
 
 deck.place_first_card()
@@ -98,22 +98,6 @@ currentTopCard = deck.get_current_deck_top_card().get_image()
 display.display_current_deck_top_card(currentTopCard)
 
 
-
-# clock = pygame.time.Clock()
-# keeprunning = True
-# while keeprunning == True:
-#     clock.tick(60)
-#
-#     for event in pygame.event.get():
-#         if event.type == pygame.QUIT:
-#             run = False
-#             pygame.quit()
-#
-#     display.create_button(284, 492)
-
-
-# display.input_checks()
-display.dont_quit_pygame() # place at end of file, for now
-
-
+display.input_checks()
+#display.dont_quit_pygame() # place at end of file, for now
 

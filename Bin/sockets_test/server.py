@@ -28,21 +28,21 @@
 #     clientsocket.close()
 
 
+
 import socket
 
-HEADERSIZE = 10
-
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-s.bind((socket.gethostname(), 1235))
-s.listen(5)
-
-while True:
-    clientsocket, address = s.accept()
-    print(f"Connection from {address} has been established!")
-
-    msg = "Welcome to the server!"
-    msg = f'{len(msg):<{HEADERSIZE}}' + msg
-
-    clientsocket.send(bytes(msg, "utf-8"))
+port = 3125
+s.bind((socket.gethostname(), port))
+print ('Socket binded to port 3125')
+s.listen(3)
+print ('socket is listening')
+bob=''
+c, addr = s.accept()
+print('Got connection from ', addr)
+while bob !='exit':
+    bob = (c.recv(1024)).decode('utf-8')
+    print (bob)
+c.close()
 
 

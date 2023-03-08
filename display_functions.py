@@ -43,13 +43,16 @@ class Display:
 
     def create_button(self):
         color_dark = (100, 100, 100, 100)
-        ...
-        ...
+
         pygame.draw.rect(self.screen, color_dark, [284, 492, 131, 190])
         # x-coordinate, y-coordinate, width and height
         # https://coderslegacy.com/python/creating-buttons-in-pygame/
 
 
+    # def create_button(self, x, y):
+    #     mouseX, mouseY = pygame.mouse.get_pos()
+    #     if mouseX <= x and mouseX > x + 131 and mouseY <= y and mouseY > y + 190:
+    #         print("yes babe")
     ####
 
     def draw_oppnents_grid_bg(self):
