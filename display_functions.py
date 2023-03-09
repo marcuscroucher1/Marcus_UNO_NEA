@@ -3,8 +3,10 @@ import pygame.freetype
 import game_classes
 import time
 import sys
+screenCards=[]
 
 class Display:
+    
     def __init__(self):
 
         self.__screenHeight = 720
@@ -22,7 +24,7 @@ class Display:
         self.__gameFontSmall = pygame.freetype.Font("assets/Ubuntu/Ubuntu-Regular.ttf", 24)
         self.__gameFontMedium = pygame.freetype.Font("assets/Ubuntu/Ubuntu-Regular.ttf", 40)
         self.__gameFontLarge = pygame.freetype.Font("assets/Ubuntu/Ubuntu-Regular.ttf", 56)
-
+        self.__allTheCards =[]
         # keepAlive = True
         #
         # while keepAlive:
@@ -33,6 +35,8 @@ class Display:
 
         # pygame.font.init()  # you have to call this at the start,
         # # if you want to use this module.
+    def UpdateAllTheCards(self,allcards):#joe
+        self.__allTheCards = allcards
 
     def display_background(self):
         bg_image = pygame.image.load("assets/Table_1.png")
@@ -149,20 +153,33 @@ class Display:
     #     # fill this out later for making a ui that can adjust itself for more players
     #     pass
 
-    def display_card(self, xCoordinate, yCoordinate, cardImage, scale):
-
+    def display_card(self, xCoordinate, yCoordinate, aCard, scale):
+        print("disp")
+        cardImage = aCard.get_image()
         width = cardImage.get_rect().width
         height = cardImage.get_rect().height
-
-        cardImage = pygame.transform.smoothscale(cardImage, (width * scale, height * scale))
-        self.screen.blit(cardImage, (xCoordinate, yCoordinate))
+        cardImage = pygame.transform.smoothscale(cardImage, (int(width * scale), int(height * scale)))
+        tempArr=[aCard,self.screen.blit(cardImage, (xCoordinate, yCoordinate))]
+        screenCards.append(tempArr)
         pygame.display.flip()
 
+    #def JOEdisplay_card(self, xCoordinate, yCoordinate, theCards, scale):
+    #    print("Joedisp")
+    #    for acard in theCards:
+    #        time.sleep(0.01)
+    #        card_image = acard.get_image()
+    #        width = card_image.get_rect().width
+    #        height = card_image.get_rect().height
+    #        cardImage = pygame.transform.smoothscale(card_image, (int(width * scale), int(height * scale)))
+    #        screenCards.append(self.screen.blit(cardImage, (xCoordinate, yCoordinate)))
+    #        pygame.display.flip()
 
     ###
 
 
     ###
+    def printScreenCards(self):
+        print(screenCards)
 
     def display_text(self, xCoordinate, yCoordinate, text, size):
         if size == 0:
@@ -192,13 +209,13 @@ class Display:
     #     pygame.display.flip()
 
     def display_current_deck_top_card(self, currentTopCard):
-        self.display_card(755, 129, currentTopCard, 0.55)
+        self.display_card(755, 129, currentTopCard, 0.50)
 
     def display_current_deck_bottom_card(self, currentBottomCard):
-        self.display_card(850, 75, currentBottomCard, 0.55)
+        self.display_card(850, 75, currentBottomCard, 0.50)
 
     def display_currently_placed_cards(self, currentPlacedCard):
-        self.display_card(1024, 111, currentPlacedCard, 0.55)
+        self.display_card(1024, 111, currentPlacedCard, 0.50)
 
         # self.screen.blit(currentPlacedCard, (1024, 111))
         # pygame.display.flip()
@@ -231,6 +248,11 @@ class Display:
     def dont_quit_pygame(self):
         while True:
             for event in pygame.event.get():
+                if event.type == pygame.MOUSEBUTTONDOWN:
+                     cX,cY = event.pos
+                     for thiscard in screenCards:
+                        if thiscard[1].collidepoint(cX, cY): #am i on a card
+                            print(thiscard[0].get_symbol())
                 if event.type == pygame.QUIT:
                     pygame.quit()
                     sys.exit()

@@ -91,12 +91,12 @@ deck.place_first_card()
 # SOCKETS - ASK JOE?
 
 
-currentPlacedCard = deck.get_current_placed_card().get_image()
+currentPlacedCard = deck.get_current_placed_card()#.get_image()
 display.display_currently_placed_cards(currentPlacedCard)
 
-currentTopCard = deck.get_current_deck_top_card().get_image()
+currentTopCard = deck.get_current_deck_top_card()#.get_image()
 display.display_current_deck_top_card(currentTopCard)
-
+display.printScreenCards()
 
 
 # clock = pygame.time.Clock()

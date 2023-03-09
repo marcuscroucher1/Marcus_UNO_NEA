@@ -10,7 +10,7 @@ class Card:
         self.__colour = colour
         self.__symbol = symbol
         self.__image = pygame.image.load("assets/" + self.__colour + "_" + self.__symbol + ".png")
-        self.__owner = owner
+        #self.__owner = owner
 
     def get_colour(self):
         return self.__colour
@@ -44,18 +44,25 @@ class Card:
         pygame.display.flip()
         time.sleep(0.1)
 
-class Deck:
+class Cards(): # abstract class 
+    colours = ["Blue", "Green", "Red", "Yellow"]
+    symbols = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "Draw", "Reverse", "Skip"]
+    def __init__(self):
+        pass
+
+class Deck(Cards):
 
     def __init__(self):
+        super().__init__()
         self.__list_of_face_up_deck = []
         self.__list_of_player_cards = []
         self.__list_of_placed_cards = []
         self.current_card = None
 
-        colours = ["Blue", "Green", "Red", "Yellow"]
-        symbols = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "Draw", "Reverse", "Skip"]
-        for possible_colour in colours:
-            for possible_symbol in symbols:
+        #colours = ["Blue", "Green", "Red", "Yellow"]
+        #symbols = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "Draw", "Reverse", "Skip"]
+        for possible_colour in self.colours:
+            for possible_symbol in self.symbols:
                 card_obj = Card(colour=possible_colour, symbol=possible_symbol, owner="pickupPile")
                 self.__list_of_face_up_deck.append(card_obj)
 
@@ -70,7 +77,7 @@ class Deck:
             card.display_details_card()
 
     def shuffle(self):
-        random.shuffle(self.__list_of_face_up_deck)
+        random.shuffle(self.__list_of_face_up_deck)#starting point
 
     def deal_7(self, player):
         for i in range(7):
@@ -108,6 +115,9 @@ class Deck:
         self.__list_of_placed_cards.append(self.__list_of_face_up_deck[0])
         self.__list_of_face_up_deck = self.__list_of_face_up_deck[1:]
 
+class Hand(Cards): #player cards
+    pass
+
 class Player:
 
     def __init__(self, name, opponentNumber):
@@ -119,7 +129,7 @@ class Player:
         return self.__name
 
     def get_current_cards(self, cards):
-        player_cards = []
+        player_cards = [] # hand'
         for card in cards:
             if card.get_owner() == self.__name:
                 player_cards.append(card)
@@ -136,12 +146,12 @@ class Player:
     def display_current_cards(self, deckName, displayName, xposition, yposition, timeSleep, scale, xpositiontoadvance): # use
         # with
         # redraw_player_deck
+        #joe displayName.UpdateAllTheCards()
         currentcards = self.get_current_cards(deckName.get_player_cards())
         for card in currentcards:
             time.sleep(timeSleep)
-            card_image = card.get_image()
-
-            displayName.display_card(xposition, yposition, card_image, scale)
+            #card_image = card.get_image()
+            displayName.display_card(xposition, yposition, card, scale)
             xposition += xpositiontoadvance
 
     def redraw_player_deck(self, deckName, displayName):
